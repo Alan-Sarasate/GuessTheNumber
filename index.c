@@ -1,9 +1,21 @@
 #include <stdio.h>
 #include <time.h>
 
-int jogoFacil(){
-
-
+void jogoFacil(int numero){
+    int ultimoPalpite, palpite, palpites = 0;
+    do{
+        printf("Digite um inteiro: ");
+        scanf("%d", &palpite);
+        printf("\n");
+        palpites++;
+        ultimoPalpite = palpite;
+        if(palpite == numero){
+            printf("\t\tVOCE GANHOOOOOOOU!!!!!!\nNumero da rodada: %d\nQuantidade de palpites: %d\n\n", numero, palpites);
+        }else{
+            palpite > numero? printf("<<<<<<<<<<<<<<<\n\n") : printf(">>>>>>>>>>>>>>>\n\n");
+            printf("Ultimo palpite: %d\nQuantidade de palpites: %d\n\n", ultimoPalpite, palpites);
+        }
+    }while(palpite != numero);
 }
 
 int main(){
@@ -17,20 +29,8 @@ int main(){
         {
         case 1:
             printf("\t\tJOGO FACIL\n\n");
-            int numero = rand() % 50, ultimoPalpite, palpite, palpites = 0;
-            do{
-                printf("Digite um inteiro: ");
-                scanf("%d", &palpite);
-                printf("\n");
-                palpites++;
-                ultimoPalpite = palpite;
-                if(palpite == numero){
-                    printf("\t\tVOCE GANHOOOOOOOU!!!!!!\nNumero da vez: %d\nQuantidade de palpites: %d\n\n", numero, palpites);
-                }else{
-                    palpite > numero? printf("<<<<<<<<<<<<<<<\n\n") : printf(">>>>>>>>>>>>>>>\n\n");
-                    printf("Ultimo palpite: %d\nQuantidade de palpites: %d\n\n", ultimoPalpite, palpites);
-                }
-            }while(palpite != numero);
+            int numero = rand() % 50;
+            jogoFacil(numero);
             break;
         
         default:
